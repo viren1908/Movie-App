@@ -1,0 +1,171 @@
+.App {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+* {
+    box-sizing: border-box;
+} 
+
+:root{
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+}
+
+body {
+    background-color: var(--primary-color);
+    margin: 0;
+    font-family: 'Poppins', sans-serif; 
+}   
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.banner-card {
+  margin-bottom: 50vh;
+  height: 40vh;
+  position : relative ;
+} 
+
+.banner-image{
+  /* border-radius  : 0px 0px 50px 50px ; */
+  /* width: 100%;
+  height: 80vh;  */
+  background-repeat: no-repeat;
+ background-size: cover; 
+ opacity: 0.9;
+}  
+
+/* .banner-image:hover {
+  opacity: 1;
+} */
+
+.banner-title {
+  position : absolute ;
+  top : 45vh ;
+  left : 5vh ; 
+  color: white; 
+  font-weight: 900; 
+  background : linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+} 
+
+.banner-text {
+  position : absolute ;
+  top : 55vh;
+  left : 5vh ; 
+  height : 4.5rem ;
+  overflow: hidden;
+  margin-right: 5vw;
+  color: white; 
+  background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+} 
+
+
+
+@media screen and (max-width:760px) {
+  
+  .banner-text {
+    position : absolute ;
+    top : 25vh; 
+    font-size: small;
+  } 
+  .banner-title {
+    position : absolute ;
+  top : 20vh ; 
+
+  } 
+  .banner-card {
+    height: 30vh;
+    margin-bottom: 5rem;
+  }
+} 
+
+.Movies{
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap; 
+  /* align-items: center; */
+
+} 
+
+.movie-div { 
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 1rem; 
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; 
+  align-items: center;
+}
+
+.movie-div img{ 
+  margin: 5px 10px; 
+  width: 100%; 
+}  
+
+.movie-info{
+  margin: 5px 10px; 
+ color: white;
+  display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.overview{
+  background-color: rgb(192, 136, 238);
+  padding: 2rem;
+  height: 30vh;
+  overflow: hidden;
+  /* position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100%;
+  transform: translateY(100%) ;
+  transition: transform 0.4s ease-in; */
+} 
+
+/* .movie-div:hover .overview{
+  transform: translateY(0);
+} */
