@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+import axios from "axios"; 
+
 export default class Movies extends Component {
   constructor() {
     super();
@@ -7,7 +8,8 @@ export default class Movies extends Component {
     this.state = {
       parr: [1],
       currPage: 1,
-      movies: [],
+      movies: [], 
+      watchlist:[]
     };
   }
   // Api key ea1bfc09076ec13dc3d682b81cc8b8ec
@@ -20,6 +22,7 @@ export default class Movies extends Component {
       movies: [...data.results],
     });
   }
+
   changeMovies = async () => {
     const res = await axios.get(
       `https://api.themoviedb.org/3/movie/popular?api_key=ea1bfc09076ec13dc3d682b81cc8b8ec&language=en-US&page=${this.state.currPage}`
@@ -68,7 +71,29 @@ export default class Movies extends Component {
               currPage : value
           },this.changeMovies)
       }
-  };
+  }; 
+
+   handleWatchlist = (movie)=>{
+      let oldData = JSON.parse(localStorage.getItem('movies') || "[]" )
+
+      if(this.state.watchlist.includes(movie.id)){
+        // removing - it is already present in oldDtat
+        oldData = oldData.filter((m)=> m.id != movie.id )
+      }else{ 
+        // not in watchlist
+          oldData.push(movie)
+      }
+      localStorage.setItem("movies",JSON.stringify(oldData));
+      this.handleWatchlistState();
+    }
+
+    handleWatchlistState = () => {
+      let oldData = JSON.parse(localStorage.getItem('movies') || "[]" );
+      let temp = oldData.map((movies)=>movies.id);
+      this.setState({
+        watchlist : [...temp]
+      })
+    } 
 
   render() {
     // let movie = movies.results;
@@ -94,13 +119,13 @@ export default class Movies extends Component {
                   <h4>{movie.original_title}</h4>
                 </div>
                 {/* <button className='btn btn-primary' >Details</button> */}
-                <div class="d-grid gap-2">
-                  <button class="btn btn-primary" type="button">
+                <div className="d-grid gap-2">
+                  <button className="btn btn-primary" type="button">
                     Watch
                   </button>
 
-                  <a class="btn btn-primary" type="button">
-                    Add to Watchlist
+                  <a className="btn btn-primary" onClick={() => this.handleWatchlist(movie) } >
+                    {this.state.watchlist.includes(movie.id) ? "Remove from Watchlist" : "Add to Watchlist"}
                   </a>
                 </div>
                 {/* <div className='overview' > <h3>Overview</h3>  {movie.overview} </div> */}
@@ -129,8 +154,8 @@ export default class Movies extends Component {
                   </li>
                 );
               })}
-              <li class="page-item">
-                <a class="page-link" onClick={this.handleRight}>
+              <li className="page-item">
+                <a className="page-link" onClick={this.handleRight}>
                   Next
                 </a>
               </li>
